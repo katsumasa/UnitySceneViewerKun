@@ -1,4 +1,4 @@
-# UnitySceneViewKun
+# UnitySceneViewerKun
 ## 概要
 UnityEditorで編集中のSceneを実機上で表示するプロジェクトです。<br/>
 UnityEditorの左側のWindowが実機だと思って下さい。
