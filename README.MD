@@ -1,6 +1,6 @@
 # UnitySceneViewKun
 ## 概要
-UnityEditorのSceneViewに表示されている内容を実機上で表示するプロジェクトです。
+UnityEditorで編集中のSceneを実機上で表示するプロジェクトです。
 
 ## 動作確認環境
 ### 動作確認済みUnity
