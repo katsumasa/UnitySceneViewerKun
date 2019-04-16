@@ -17,6 +17,6 @@ Build Settings よりDevelopmentとAutoconnect ProfilerをONにした状態で�
 
 1. Window->UnitySceneViewerKunを選択する下記のWindowを開きます。<br/>
 ![alt text](doc/image/e0cfd85ee878a9e9108d618eb0c4a1cb.png)
-2. Window左上のプルダウンメニューから対象となるPlayerを選択します。
+2. Window左上のプルダウンメニューから対象Playerを選択します。（※ProfilerやFrameDebuggerの場合と同等です）
 3. Window中央のプルダウンメニューからPlattoformを選択します。
 4. Reloadボタンを押します。
