@@ -1,7 +1,7 @@
 # UnitySceneViewKun
 ## 概要
-UnityEditorで編集中のSceneを実機上で表示するプロジェクトです。
-
+UnityEditorで編集中のSceneを実機上で表示するプロジェクトです。<br/>
+![alt text](doc/images/19a2fbac14b1d38f16ad853be9a6402b.gif)
 ## 動作確認環境
 ### 動作確認済みUnity
 - Unity2017.4.24f1
