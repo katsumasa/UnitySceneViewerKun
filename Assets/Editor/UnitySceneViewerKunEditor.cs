@@ -28,7 +28,7 @@ namespace Utj.UnitySceneViewerKun
         };
 
 
-        static readonly GUIContent m_plattoformGuiContent = new GUIContent("Plattform", "接続する機材のプラットフォーム");
+        static readonly GUIContent m_plattoformGuiContent = new GUIContent("Platform", "接続する機材のプラットフォーム");
         static readonly GUIContent m_compressionGuiContent = new GUIContent("Compression", "実機に転送するデータの圧縮形式");
         static readonly string assetBundlePath = "Temp";
         static readonly string assetBundleName = "unitysceneviewerkunsubscene";
