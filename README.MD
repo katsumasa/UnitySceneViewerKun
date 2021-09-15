@@ -1,4 +1,7 @@
 # UnitySceneViewerKun
+
+[English Ver. README](README_EN.md)
+
 ## 概要
 UnityEditorで編集中のSceneを実機上で表示する（Sceneのホットリロードを行う）プロジェクトです。Sceneの変更内容を素早く実機上で確認する場合に使用します。
 
