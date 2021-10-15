@@ -1,21 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Text;
-using System.Reflection;
+﻿using System.Reflection;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Networking.PlayerConnection;
 using UnityEditor;
-using UnityEditor.Networking.PlayerConnection;
 using UnityEditor.SceneManagement;
-using System;
 
 
-#if UNITY_2018_1_OR_NEWER
-using UnityEngine.Experimental.Networking.PlayerConnection;
-using ConnectionUtility = UnityEditor.Experimental.Networking.PlayerConnection.EditorGUIUtility;
-using ConnectionGUILayout = UnityEditor.Experimental.Networking.PlayerConnection.EditorGUILayout;
-#endif
+
+
 
 namespace UTJ.UnitySceneViewerKun
 {
@@ -34,22 +25,10 @@ namespace UTJ.UnitySceneViewerKun
         static readonly GUIContent m_compressionGuiContent = new GUIContent("Compression", "実機に転送するデータの圧縮形式");
         static readonly string assetBundlePath = "Temp";
         static readonly string assetBundleName = "unitysceneviewerkunsubscene";
-
-        bool m_registered = false;
         BuildTarget m_buildTarget = BuildTarget.Android;
         Compression m_compression = Compression.None;
 
-#if UNITY_2018_1_OR_NEWER
-        IConnectionState attachProfilerState;
-#else
-        Type AttachProfilerUI;
-#endif
-        MethodInfo m_attachProfilerUIOnGUILayOut;
-        System.Object m_attachProfilerUI;
-        string m_playerToEditorMessage ="";
-
-        
-
+                
 
         [MenuItem("Window/UTJ/UnitySceneViewerKun")]
         static void Create()
@@ -103,8 +82,7 @@ namespace UTJ.UnitySceneViewerKun
                     SendRemoteMessage(UTJ.UnitySceneViewerKun.UnitySceneViewerKunMessage.Serialize(message));
                     
                     EditorUtility.ClearProgressBar();
-
-                    m_playerToEditorMessage = "Send Message";
+                 
                 }
             }            
         }
