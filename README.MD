@@ -1,4 +1,5 @@
 # UnitySceneViewerKun
+![GitHub package.json version](https://img.shields.io/github/package-json/v/katsumasa/UnitySceneViewerKun)
 
 [English Ver. README](Documentation~/UnitySceneViewerKun.md)
 
