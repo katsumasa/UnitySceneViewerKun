@@ -1,22 +1,25 @@
 # UnitySceneViewerKun
 
-[English Ver. README](README_EN.md)
+[English Ver. README](Documentation~/UnitySceneViewerKun.md)
 
 ## 概要
+
 UnityEditorで編集中のSceneを実機上で表示する（Sceneのホットリロードを行う）プロジェクトです。Sceneの変更内容を素早く実機上で確認する場合に使用します。
 
 ![19a2fbac14b1d38f16ad853be9a6402b](https://user-images.githubusercontent.com/29646672/137443854-7a37ff5e-3d0d-4524-9011-2c6a666daceb.gif)
 
-
 画像の左側がAndroidで実行されている内容です。
+
 ## 動作確認環境
 
 ### 動作確認済みUnity
+
 - Unity2017.4.24f1
 - Unity2018.4.31f1
 - Unity2019.4.19f1
 
 ### 動作確認済みプラットフォーム
+
 - Android
 - iOS
 
@@ -24,7 +27,7 @@ UnityEditorで編集中のSceneを実機上で表示する（Sceneのホット�
 
 ### 事前準備(Playerのビルド)
 
-`Scenes/UnitySceneViewKun.unity`をDevelopmentと Autoconnect ProfilerをONにした状態でBuild & Runを実行して任意の端末で実行してください。 
+`Scenes/UnitySceneViewKun.unity`をDevelopmentと Autoconnect ProfilerをONにした状態でBuild & Runを実行して任意の端末で実行してください。
 
 <img width="430" alt="2021-02-19 144614" src="https://user-images.githubusercontent.com/29646672/137443916-4dd655ec-e675-41be-8c20-baf4c9aad2fe.png">
 
@@ -32,7 +35,8 @@ UnityEditorで編集中のSceneを実機上で表示する（Sceneのホット�
 ### Sceneのリロード方法
 
 下記の手順でUnityEditor上で編集しているSceneを実機上に転送します。
-1. Unity Editor上で実機上で確認を行いたいSceneを開きます。</br>
+
+1. Unity Editor上で実機上で確認を行いたいSceneを開きます。`Scenes/UnitySceneViewKun.unity`以外を開いて下さい。</br>
 2. Window->UnitySceneViewerKunを選択し、UnitySceneViewerKun Windowを開きます。<br/>
    <img width="234" alt="e0cfd85ee878a9e9108d618eb0c4a1cb" src="https://user-images.githubusercontent.com/29646672/137443973-c75b969f-0a01-4fce-bcbe-93f80e857374.png">
 
