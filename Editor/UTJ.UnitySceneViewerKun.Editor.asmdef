@@ -1,0 +1,17 @@
+{
+    "name": "UTJ.UnitySceneViewerKun.Editor",
+    "references": [
+        "GUID:597527dad513d1549972c63aecdfd652"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

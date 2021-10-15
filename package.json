@@ -1,0 +1,28 @@
+{
+  "name": "com.utj.unitysceneviewerkun",
+  "displayName": "UnitySceneViewerKun",
+  "version": "0.1.0",
+  "unity": "2019.3",
+  "keywords": [
+    "unity",
+    "editor",
+    "tools"
+  ],
+  "description": "This project allows you to display the scene being edited inside Unity editor on actual device. It's also capable of hot reloading, which comes in handy for a quick check of the result you edited in the scene to the actual device.",
+  "dependencies": {
+  },
+  "author": {
+    "name": "Katsumasa.Kimura",
+    "email": "katsumasa@unity3d.com",
+    "url": "https://github.com/katsumasa"
+  },
+  "relatedPackages": {
+  },
+  "upmCi": {
+  },
+  "repository": {
+    "url": "https://github.com/katsumasa/UnitySceneViewerKun.git",
+    "type": "git",
+    "revision": ""
+  }
+}
