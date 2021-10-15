@@ -10,13 +10,31 @@ The left side of the image is the screen displayed on Adroid device.
 ## Operating Environment 
 ### Unity Version
 
-- Unity2017.4.24f1
-- Unity2018.4.31f1
+
 - Unity2019.4.19f1
+- 
 ### Platform
 
 - Android
 - iOS
+
+## Install
+
+### git
+
+```:console
+git clone https://github.com/katsumasa/RemoteConnect.git
+git clone https://github.com/katsumasa/UnitySceneViewerKun.git
+```
+
+### UnityPackageManager
+
+1. Click the add  button in the status bar.
+2. The options for adding packages appear.
+3. Select Add package from git URL from the add menu. A text box and an Add button appear.
+4. Enter a next Git URL in the text box and click Add.
+   https://github.com/katsumasa/RemoteConnect.git
+   https://github.com/katsumasa/UnitySceneViewerKun.git
 
 ## How to use
 ### Things to prepare in advance (Player Build)

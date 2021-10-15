@@ -14,14 +14,30 @@ UnityEditorで編集中のSceneを実機上で表示する（Sceneのホット�
 
 ### 動作確認済みUnity
 
-- Unity2017.4.24f1
-- Unity2018.4.31f1
 - Unity2019.4.19f1
 
 ### 動作確認済みプラットフォーム
 
 - Android
 - iOS
+
+## インストール方法
+
+### git
+
+```:console
+git clone https://github.com/katsumasa/RemoteConnect.git
+git clone https://github.com/katsumasa/UnitySceneViewerKun.git
+```
+
+### UnityPackageManager
+
+1. ステータスバーの Add  ボタンをクリックします。
+2. パッケージを加えるためのオプションが表示されます。
+3. ドロップダウンから Add package from git URL を選択します。テキストフィールドと Add ボタンが表示されます。
+4. テキストフィールドに次のGit URL を順番に入力し、Add をクリックします。
+   https://github.com/katsumasa/RemoteConnect.git
+   https://github.com/katsumasa/UnitySceneViewerKun.git
 
 ## 使い方
 

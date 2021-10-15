@@ -1,7 +1,9 @@
 {
     "name": "UTJ.UnitySceneViewerKun.Editor",
     "references": [
-        "GUID:597527dad513d1549972c63aecdfd652"
+        "GUID:0e80379a029da2e44b192fcaf767e3af",
+        "GUID:597527dad513d1549972c63aecdfd652",
+        "GUID:fea82b92eb7ce2f40a863ea006b625ba"
     ],
     "includePlatforms": [
         "Editor"

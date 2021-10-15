@@ -1,7 +1,7 @@
 {
   "name": "com.utj.unitysceneviewerkun",
   "displayName": "UnitySceneViewerKun",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "unity": "2019.3",
   "keywords": [
     "unity",
@@ -10,6 +10,7 @@
   ],
   "description": "This project allows you to display the scene being edited inside Unity editor on actual device. It's also capable of hot reloading, which comes in handy for a quick check of the result you edited in the scene to the actual device.",
   "dependencies": {
+    "com.utj.remoteconnect": "0.1.1"
   },
   "author": {
     "name": "Katsumasa.Kimura",

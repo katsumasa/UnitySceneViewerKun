@@ -9,15 +9,17 @@ using UnityEditor;
 using UnityEditor.Networking.PlayerConnection;
 using UnityEditor.SceneManagement;
 using System;
+
+
 #if UNITY_2018_1_OR_NEWER
 using UnityEngine.Experimental.Networking.PlayerConnection;
 using ConnectionUtility = UnityEditor.Experimental.Networking.PlayerConnection.EditorGUIUtility;
 using ConnectionGUILayout = UnityEditor.Experimental.Networking.PlayerConnection.EditorGUILayout;
 #endif
 
-namespace Utj.UnitySceneViewerKun
+namespace UTJ.UnitySceneViewerKun
 {
-    public class UnitySceneViewerKunEditor : EditorWindow
+    public class UnitySceneViewerKunEditor : UTJ.RemoteConnect.Editor.RemoteConnectEditorWindow
     {
 
         enum Compression
@@ -46,135 +48,43 @@ namespace Utj.UnitySceneViewerKun
         System.Object m_attachProfilerUI;
         string m_playerToEditorMessage ="";
 
+        
 
-        [MenuItem("Window/UnitySceneViewerKun")]
+
+        [MenuItem("Window/UTJ/UnitySceneViewerKun")]
         static void Create()
         {
             var window = (UnitySceneViewerKunEditor)EditorWindow.GetWindow(typeof(UnitySceneViewerKunEditor));
-            window.Show();
-            window.titleContent = new GUIContent("UnitySceneViewerKunEditor");        
+            window.titleContent = new GUIContent("UnitySceneViewerKunEditor");            
+            window.Show();           
         }
 
 
-#if !UNITY_2018_1_OR_NEWER
-        void Reflection()
-        {
-            // この関数内の処理は全く、推奨出来ませんので参考にしないでください。
-            // AttachProfilerUIとは
-            // ProfilerやConsole WindowにあるTargetの選択用Pulldown UI
-            // internal classの為、Relectionで無理やり
-            if (AttachProfilerUI == null)
-            {
-                Assembly assembly = Assembly.Load("UnityEditor");
-                AttachProfilerUI = assembly.GetType("UnityEditor.AttachProfilerUI");
-            }
-            if ((m_attachProfilerUI == null) && (AttachProfilerUI != null))
-            {
-                m_attachProfilerUI = AttachProfilerUI.InvokeMember(
-                    null
-                , BindingFlags.CreateInstance
-                , null
-                , null
-                , new object[] { }
-                );
-            }
-            if (m_attachProfilerUIOnGUILayOut == null)
-            {
-                m_attachProfilerUIOnGUILayOut = AttachProfilerUI.GetMethod("OnGUILayout");
-            }
-    }
-#endif
 
-        private void Initialize()
+        protected override void OnEnable()
         {
-            if (m_registered == false)
-            {
-                UnityEditor.Networking.PlayerConnection.EditorConnection.instance.Initialize();
-                UnityEditor.Networking.PlayerConnection.EditorConnection.instance.Register(UnitySceneViewerKunPlayer.kMsgSendPlayerToEditor, OnMessageEvent);
-                m_registered = true;
-            }
+            kMsgSendEditorToPlayer = new System.Guid("7be7ee8b81e040fe906820341961de4c");
+            kMsgSendPlayerToEditor = new System.Guid("63ab807d9485442689a55b16a85df1ca");
+              
+            base.OnEnable();
         }
 
-
-        private void OnDestroy()
-        {
-            if (m_registered == true)
-            {
-                // Registされているかどうか判断する術がない・・・
-                UnityEditor.Networking.PlayerConnection.EditorConnection.instance.Unregister(UnitySceneViewerKunPlayer.kMsgSendPlayerToEditor, OnMessageEvent);
-                UnityEditor.Networking.PlayerConnection.EditorConnection.instance.DisconnectAll();
-                m_registered = false;
-            }
-        }
-
-
-        // SampleのようにOnEnable/OnDisableで処理すると通信が不安体になる
-        private void OnEnable()
-        {
-#if UNITY_2018_1_OR_NEWER
-            if (attachProfilerState == null)
-            {
-                attachProfilerState = ConnectionUtility.GetAttachToPlayerState(this);
-            }
-#endif
-        }
-
-
-        private void OnDisable()
-        {
-#if UNITY_2018_1_OR_NEWER
-            attachProfilerState.Dispose();
-            attachProfilerState = null;
-#endif
-        }
-
-
-        private void OnMessageEvent(MessageEventArgs args)
-        {
-            m_playerToEditorMessage = Encoding.ASCII.GetString(args.data);
-        }
 
         
         private void OnGUI()
         {
-            Initialize();
-#if UNITY_2018_1_OR_NEWER
-            if (attachProfilerState != null)
-            {
-                ConnectionGUILayout.AttachToPlayerDropdown(attachProfilerState, EditorStyles.toolbarDropDown);
-            }        
-#else
-            Reflection();
-            if (m_attachProfilerUIOnGUILayOut != null && m_attachProfilerUI != null)
-            {
-                m_attachProfilerUIOnGUILayOut.Invoke(m_attachProfilerUI, new object[] { this });
-            }
-#endif
-            var playerCount = EditorConnection.instance.ConnectedPlayers.Count;
-            StringBuilder builder = new StringBuilder();
-            builder.AppendLine(string.Format("{0} players connected.", playerCount));
-            int i = 0;
-            foreach (var p in EditorConnection.instance.ConnectedPlayers)
-            {
-                builder.AppendLine(string.Format("[{0}] - {1} {2}", i++, p.name, p.playerId));
-            }
-            EditorGUILayout.HelpBox(builder.ToString(), MessageType.Info);
-
+            base.ConnectionTargetSelectionDropdown();
 
             var scene = SceneManager.GetActiveScene();
             EditorGUILayout.LabelField("SceneName " + scene.name);
             EditorGUILayout.LabelField("ScenePath " + scene.path);
 
-
             m_buildTarget = (BuildTarget) EditorGUILayout.EnumPopup(m_plattoformGuiContent, m_buildTarget);
             m_compression = (Compression)EditorGUILayout.EnumPopup(m_compressionGuiContent, m_compression);
-
-            //EditorGUILayout.BeginHorizontal("Button");
+            
             if (GUILayout.Button("Reload") == true)
-            {
-              
+            {              
                 var isSaveResult = EditorSceneManager.SaveScene(scene);
-
                 if (isSaveResult)
                 {
                     BuildAssetBundle();
@@ -185,14 +95,20 @@ namespace Utj.UnitySceneViewerKun
                     EditorUtility.ClearProgressBar();
 
                     UnityEditor.EditorUtility.DisplayProgressBar("UnitySceneViewerKun", "...", 0.0f);
-                    EditorConnection.instance.Send(UnitySceneViewerKunPlayer.kMsgSendEditorToPlayer, bytes);
+
+
+                    var message = new UnitySceneViewerKunMessage();
+                    message.assetBundle = bytes;
+
+                    SendRemoteMessage(UTJ.UnitySceneViewerKun.UnitySceneViewerKunMessage.Serialize(message));
+                    
                     EditorUtility.ClearProgressBar();
 
                     m_playerToEditorMessage = "Send Message";
                 }
-            }
-            //EditorGUILayout.EndHorizontal();            
+            }            
         }
+
 
         void BuildAssetBundle()
         {
