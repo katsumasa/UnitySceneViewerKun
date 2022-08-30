@@ -45,9 +45,19 @@ git clone https://github.com/katsumasa/UnitySceneViewerKun.git
 ### 事前準備(Playerのビルド)
 
 
-[UnitySceneViewerKunPlayerPrefab.prefab](https://github.com/katsumasa/UnitySceneViewerKun/blob/master/Runtime/Prefabs/UnitySceneViewerKunPlayerPrefab.prefab)のみをSceneに配置してDevelopmentと Autoconnect ProfilerをONにした状態でBuild & Runを実行して任意の端末で実行してください。
+[UnitySceneViewerKunPlayerPrefab.prefab](https://github.com/katsumasa/UnitySceneViewerKun/blob/master/Runtime/Prefabs/UnitySceneViewerKunPlayerPrefab.prefab)のみが含まれたSceneだけで構成されたアプリケーションをビルドします。具体的な基準は下記の通りです。
 
-<img width="430" alt="2021-02-19 144614" src="https://user-images.githubusercontent.com/29646672/137443916-4dd655ec-e675-41be-8c20-baf4c9aad2fe.png">
+1. File > New Scene > Emptyで新しい空のSceneを生成する
+2. [UnitySceneViewerKunPlayerPrefab.prefab](https://github.com/katsumasa/UnitySceneViewerKun/blob/master/Runtime/Prefabs/UnitySceneViewerKunPlayerPrefab.prefab)をSceneに配置します。
+3. File > SaveでSceneを保存します。
+4. File > Build SettingsでBuild Settings Windowを開きます。
+5. Add Open Sceneから先程作ったSceneをScene In Buildに追加します。この時他のSceneが含まれている場合は、チェックボックスを外してビルドの対象から取り除きます。
+6. DevelopmentとAutoconnect Profilerのチェックボックスにチェックを入れます。
+7. Build And Runでビルドを実行します。
+
+
+![2807ab20c3c301b8cb835c713f1aa5cf](https://user-images.githubusercontent.com/29646672/187325733-67380597-91a1-47de-95b9-3d52ff8e672b.gif)
+
 
 
 ### Sceneのリロード方法
@@ -67,7 +77,7 @@ git clone https://github.com/katsumasa/UnitySceneViewerKun.git
 
 ## その他
 
-不具合等ありましたら、issue Trackerより報告をお願いします。
+不具合等ありましたら、[issue](https://github.com/katsumasa/UnitySceneViewerKun/issues)より報告をお願いします。
 フィードバックやコメントもお待ちしております。</br>
 __木村 勝将：katsumasa@unity3d.com__
 
